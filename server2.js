@@ -7,29 +7,27 @@ var PORT2 = 7500;
 
 
 // Here we create a generic function to handle requests and responses
-function handleRequest(request, response) {
+function handleRequest1(request, response) {
 
   // The below statement is triggered (client-side) when the user visits the PORT URL
-  response.end("It Works!! Path Hit: " + request.url);
+ response.end("It Works!! Path Hit: " + request.url + " You Rule!");
+}
+
+function handleRequest2(request, response) {
+
+	response.end("It Works!! Path Hit: " + request.url + " You Suck!");
+
+	var meanArray = ["You Suck!", "You Smell!", "You're not Tall!", 'Your hair looks crappy!'];
+
+  	
 }
 
 // Here we use the Node HTTP package to create our server.
 // We then pass it the handleRequest function to empower it with functionality.
-var server = http.createServer(handleRequest);
+var server1 = http.createServer(handleRequest1);
+var server2 = http.createServer(handleRequest2);
 
 // Here we start our server so that it can begin listening to client requests.
-server.listen(PORT1, function() {
+server1.listen(PORT1);
 
-  // The below statement is triggered (server-side) when a user visits the PORT URL
-  console.log("Server listening on: http://localhost:%s", PORT1);
-  console.log("You're a cool guy!");
-
-});
-
-server.listen(PORT2, function() {
-
-  // The below statement is triggered (server-side) when a user visits the PORT URL
-  console.log("Server listening on: http://localhost:%s", PORT2);
-  console.log("You Suck!");
-
-});
+server2.listen(PORT2);
